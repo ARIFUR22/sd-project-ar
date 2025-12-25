@@ -1,6 +1,6 @@
 package com.example.sd_project.models;
 
-public class Course {
+public class CourseModels {
 
     //datatypes
     private Long id;
@@ -13,12 +13,12 @@ public class Course {
     private String teacher;
 
     // Default Constructor
-    public Course() {
+    public CourseModels() {
         
     }
 
     //  Parameterized Constructor
-    public Course(Long id, String code, String title, Double credit,
+    public CourseModels(Long id, String code, String title, Double credit,
                   String type, String semester, Long departmentId, String teacher) {
         this.id = id;
         this.code = code;
