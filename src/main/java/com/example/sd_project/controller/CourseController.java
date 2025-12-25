@@ -16,7 +16,7 @@ import java.util.*;
 @RestController
 @RequestMapping("/courses")
 public class CourseController {
-    private final com.iiuc.SD_PROJECT.service.CourseServices service;
+    private final com.iiuc.sd_project.service.CourseServices service;
 
     public CourseController(CourseServices service) {
         this.service = service;
@@ -50,4 +50,5 @@ public class CourseController {
         return service.deleteCourse(id);
     }
 }
+
 
