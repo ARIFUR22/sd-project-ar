@@ -1,4 +1,4 @@
-package com.iiuc.SD_PROJECT.controller;
+package com.iiuc.sd_project.controller;
 
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -8,8 +8,8 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import com.iiuc.SD_PROJECT.model.CourseModels;
-import com.iiuc.SD_PROJECT.service.CourseServices;
+import com.iiuc.sd_project.model.CourseModels;
+import com.iiuc.sd_project.service.CourseServices;
 
 import java.util.*;
 
@@ -50,3 +50,4 @@ public class CourseController {
         return service.deleteCourse(id);
     }
 }
+
