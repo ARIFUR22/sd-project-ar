@@ -1,8 +1,8 @@
-package com.iiuc.SD_PROJECT.service;
+package com.iiuc.sd_project.service;
 
 import java.util.*;
 import org.springframework.stereotype.Service;
-import com.iiuc.SD_PROJECT.model.CourseModels;
+import com.iiuc.sd_project.model.CourseModels;
 
 @Service
 public class CourseServices {
@@ -68,3 +68,4 @@ public class CourseServices {
         }
     }
 }
+
