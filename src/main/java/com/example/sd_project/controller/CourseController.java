@@ -1,4 +1,4 @@
-package com.iiuc.sd_project.controller;
+package com.iiuc.StudentManagementSystem.controller;
 
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -8,15 +8,15 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import com.iiuc.sd_project.model.CourseModels;
-import com.iiuc.sd_project.service.CourseServices;
+import com.iiuc.StudentManagementSystem.model.CourseModels;
+import com.iiuc.StudentManagementSystem.service.CourseServices;
 
 import java.util.*;
 
 @RestController
 @RequestMapping("/courses")
 public class CourseController {
-    private final com.iiuc.sd_project.service.CourseServices service;
+    private final CourseServices service;
 
     public CourseController(CourseServices service) {
         this.service = service;
@@ -33,22 +33,18 @@ public class CourseController {
     }
 
     @PostMapping
-    public String addCourse(@RequestBody CourseModels course)
-    {
+    public String addCourse(@RequestBody CourseModels course) {
         return service.addCourse(course);
-    } 
+    }
 
-    @PutMapping
-    public String updateCourse(@RequestBody CourseModels updatedCourse)
-    {
+    @PutMapping("/{id}")
+    public String updateCourse(@PathVariable Long id, @RequestBody CourseModels updatedCourse) {
+        updatedCourse.setId(id);
         return service.updateCourse(updatedCourse);
     }
 
     @DeleteMapping("/{id}")
-    public String deleteCourse(@PathVariable Long id)
-    {
+    public String deleteCourse(@PathVariable Long id) {
         return service.deleteCourse(id);
     }
 }
-
-
