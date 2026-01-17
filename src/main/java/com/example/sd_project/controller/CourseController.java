@@ -32,16 +32,27 @@ public class CourseController {
         return service.getCoursesByID(id);
     }
 
-    @PostMapping
-    public String addCourse(@RequestBody CourseModels course) {
-        return service.addCourse(course);
+    @GetMapping("/dept/{id}")
+    public List<CourseModels> getDeptCourseById(@PathVariable Long id)
+    {
+        return service.getDeptCourseById(id);
     }
+
+    
+
+    @PostMapping
+    public String addCourses(@RequestBody List<CourseModels> courses) {
+        return service.addCourses(courses);
+    }
+
 
     @PutMapping("/{id}")
     public String updateCourse(@PathVariable Long id, @RequestBody CourseModels updatedCourse) {
         updatedCourse.setId(id);
         return service.updateCourse(updatedCourse);
     }
+
+    
 
     @DeleteMapping("/{id}")
     public String deleteCourse(@PathVariable Long id) {

@@ -8,7 +8,7 @@ import com.example.sd_project.models.CourseModels;
 public class CourseServices {
 
     private List<CourseModels> courses = new ArrayList<>();
-    private Long nextID=1L;
+    private Long nextID = 1L;
 
     // shob data eksathe return korbe
     public List<CourseModels> getAllCourses() {
@@ -17,39 +17,64 @@ public class CourseServices {
 
     // ID diye exact karo data return korbe
     public CourseModels getCoursesByID(Long id) {
-        for (CourseModels datas : courses) {
-            if (datas.getId().equals(id)) {
-                return datas;
+        for (CourseModels data : courses) {
+            if (data.getId().equals(id)) {
+                return data;
             }
         }
         return null;
+    }
+
+    // dept er id diye shob course get kora
+    public List<CourseModels> getDeptCourseById(Long id) {
+        final List<CourseModels> deptList = new ArrayList<>();
+        for (CourseModels data : courses) {
+            if (data.getDepartmentId().equals(id)) {
+                deptList.add(data);
+            }
+        }
+        return deptList;
     }
 
     // Notun course add korbe
     public String addCourse(CourseModels datas) {
         datas.setId(nextID);
         nextID++;
-        
+
         courses.add(datas);
         return "Course Added Successfully!";
+    }
+
+    public String addCourses(List<CourseModels> datas) {
+        for (CourseModels data : datas) {
+            data.setId(nextID);
+            nextID++;
+
+            courses.add(data);
+        }
+        return "All Courses Added Successfully!";
     }
 
     // Existing kono course er data change korbe
     public String updateCourse(CourseModels updateDatas) {
         CourseModels found = getCoursesByID(updateDatas.getId());
-        if (found == null) 
-        {
+        if (found == null) {
             return "Course doesn't found!!!";
-        } 
-        else 
-        {
-            if (updateDatas.getCode() != null) found.setCode(updateDatas.getCode());
-            if (updateDatas.getTitle() != null) found.setTitle(updateDatas.getTitle());
-            if (updateDatas.getCredit() != null) found.setCredit(updateDatas.getCredit());
-            if (updateDatas.getType() != null) found.setType(updateDatas.getType());
-            if (updateDatas.getSemester() != null) found.setSemester(updateDatas.getSemester());
-            if (updateDatas.getDepartmentId() != null) found.setDepartmentId(updateDatas.getDepartmentId());
-            if (updateDatas.getTeacher() != null) found.setTeacher(updateDatas.getTeacher());
+        } else {
+            if (updateDatas.getCode() != null)
+                found.setCode(updateDatas.getCode());
+            if (updateDatas.getTitle() != null)
+                found.setTitle(updateDatas.getTitle());
+            if (updateDatas.getCredit() != null)
+                found.setCredit(updateDatas.getCredit());
+            if (updateDatas.getType() != null)
+                found.setType(updateDatas.getType());
+            if (updateDatas.getSemester() != null)
+                found.setSemester(updateDatas.getSemester());
+            if (updateDatas.getDepartmentId() != null)
+                found.setDepartmentId(updateDatas.getDepartmentId());
+            if (updateDatas.getTeacher() != null)
+                found.setTeacher(updateDatas.getTeacher());
             return "Course Updated Successfully!";
         }
     }
@@ -57,15 +82,11 @@ public class CourseServices {
     // Course delete korbe
     public String deleteCourse(Long id) {
         CourseModels found = getCoursesByID(id);
-        if (found == null) 
-        {
+        if (found == null) {
             return "Course doesn't found!!!";
-        } 
-        else
-        {
+        } else {
             courses.remove(found);
             return "Course doesn't found!!!";
         }
     }
 }
-
