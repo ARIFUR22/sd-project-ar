@@ -1,8 +1,8 @@
-package com.iiuc.sd_project.service;
+package com.example.sd_project.service;
 
 import java.util.*;
 import org.springframework.stereotype.Service;
-import com.iiuc.sd_project.model.CourseModels;
+import com.example.sd_project.models.CourseModels;
 
 @Service
 public class CourseServices {
